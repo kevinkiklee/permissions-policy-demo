@@ -16,7 +16,7 @@ app.get('/camera-allowed', (req, res) => {
 
 app.get('/camera-disallowed', (req, res) => {
   res.set({
-    'Feature-Policy': 'camera "none"',
+    "Feature-Policy": "camera 'none'",
   })
 
   // res.set({

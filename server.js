@@ -4,16 +4,23 @@ const express = require('express')
 const PORT = 3000
 const app = express()
 
-app.use('/', express.static(path.join(__dirname, 'public')))
+app.use('/public', express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
-  // res.set({
-  //   'Feature-Policy': 'camera *',
-  // })
+  res.set({
+    'Permissions-Policy': 'camera=("https://valuable-short-food.glitch.me/")',
+  })
 
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 })
 
+app.get('/nested', (req, res) => {
+  res.set({
+    'Permissions-Policy': 'camera=("https://valuable-short-food.glitch.me/")',
+  })
+
+  res.sendFile(path.join(__dirname, 'public', 'nested.html'));
+})
 
 // app.use('/', express.static('public'));
 

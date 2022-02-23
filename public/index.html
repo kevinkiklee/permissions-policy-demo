@@ -31,6 +31,18 @@
     function navigate(route) {
       history.push(route)
     }
+    
+    async function getMedia(constraints) {
+        console.log('get media from my-site')
+        let stream = null;
+
+        try {
+            stream = await navigator.mediaDevices.getUserMedia(constraints);
+        } catch (err) {
+        }
+    }
+
+    getMedia({ video: true })
   </script>
   <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
     <header

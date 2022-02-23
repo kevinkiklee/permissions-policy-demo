@@ -6,9 +6,21 @@ const app = express()
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 
+app.get('/', (req, res) => {
+  // res.set({
+  //   'Feature-Policy': 'camera *',
+  // })
+
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+})
+
+
+// app.use('/', express.static('public'));
+
+
 app.get('/camera-allowed', (req, res) => {
   res.set({
-    'Feature-Policy': 'camera *',
+    // 'Feature-Policy': 'camera *',
   })
 
   res.sendFile(path.join(__dirname, 'public', 'camera', 'allowed.html'));

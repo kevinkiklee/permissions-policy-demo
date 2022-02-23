@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
 app.get('/nested', (req, res) => {
   res.set({
-    // 'Permissions-Policy': 'camera=(self "https://valuable-short-food.glitch.me/")',
+    'Permissions-Policy': 'camera=(self "https://valuable-short-food.glitch.me/")',
   })
 
   res.sendFile(path.join(__dirname, 'public', 'nested.html'));

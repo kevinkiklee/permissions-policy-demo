@@ -9,6 +9,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')))
 app.get('/', (req, res) => {
   res.set({
     'Permissions-Policy': 'camera=("https://valuable-short-food.glitch.me/")',
+    'Feature-Policy': 'ch-ua-full-version'
   })
 
   res.sendFile(path.join(__dirname, 'public', 'index.html'));

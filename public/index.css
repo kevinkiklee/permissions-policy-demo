@@ -1,59 +1,55 @@
-.demo-btn-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.demo-btn {
-  margin: 5px;
-  width: 500px;
-}
-
-.demo-ribbon {
-  width: 100%;
-  height: 40vh;
-  background-color: #3f51b5;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.demo-main {
-  margin-top: -35vh;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.demo-header .mdl-layout__header-row {
-  padding-left: 40px;
+p {
+  margin: 0;
+  padding: 0;
 }
 
 .demo-container {
-  max-width: 1600px;
-  width: calc(100% - 16px);
-  height: calc(100% - 115px);
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .demo-content {
   border-radius: 2px;
-  padding: 80px 56px;
-  margin-bottom: 80px;
 }
 
-.demo-layout.is-small-screen .demo-content {
-  padding: 40px 28px;
+.demo-content-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.demo-content h3 {
-  margin-top: 48px;
+.demo-content {
+  border: 1px black solid;
+  background-color: #bed899;
+  padding: 12px;
 }
 
-.demo-footer {
-  padding-left: 40px;
+.demo-iframes-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1%;
 }
 
-.demo-footer .mdl-mini-footer--link-list a {
-  font-size: 13px;
+.demo-trusted-iframe {
+  width: 49%;
+  border: 1px black solid;
+  background-color: #d3e8fa;
+}
+
+.demo-untrusted-iframe {
+  width: 49%;
+  border: 1px black solid;
+  background-color: #fdcbcb;
+}
+
+.demo-geolocation-result {
+  width: 80%;
+  height: 50px;
+  border: 1px black solid;
+}
+
+.demo-geolocation-latitude,
+.demo-geolocation-longitude {
+  margin-left: 5px;
 }

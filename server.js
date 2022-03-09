@@ -1,49 +1,40 @@
 const path = require('path')
 const express = require('express')
+const morgan = require('morgan')
 
 const PORT = 3000
 const app = express()
 
-app.use('/public', express.static(path.join(__dirname, 'public')))
+const TRUSTED_SITE = 'https://pp-demo-trusted-site.glitch.me/'
+const NAVIGATED_SITE = 'https://pp-demo-trusted-site.glitch.me/'
+const DEMO_FEATURE = 'geolocation'
+
+const POLICIES = {
+  'all-allowed': '*',
+  'none-allowed': '()',
+  'some-allowed': `(self "${TRUSTED_SITE}")`,
+  'same-origin-allowed': '(self)',
+  'iframe-nav-allowed': `(self "${TRUSTED_SITE}" "${NAVIGATED_SITE}")`,
+}
+
+const buildPermissionsPolicyHeader = (feature, demoName) => {
+  return {
+    'Permissions-Policy': `${feature}=${POLICIES[demoName]}`
+  }
+}
+
+app.use(morgan('tiny'))
+app.use(express.static('public', {extensions: ['js', 'css']}));
+
+app.get('/demo/:demoName', (req, res) => {
+  const { demoName } = req.params
+
+  res.set(buildPermissionsPolicyHeader(DEMO_FEATURE, demoName))
+  res.sendFile(path.join(__dirname, 'public', `demo.html`));
+})
 
 app.get('/', (req, res) => {
-  res.set({
-    'Permissions-Policy': 'camera=("https://valuable-short-food.glitch.me/")',
-    'Feature-Policy': "ch-ua-full-version 'none'"
-  })
-
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-})
-
-app.get('/nested', (req, res) => {
-  res.set({
-    'Permissions-Policy': 'camera=(self "https://valuable-short-food.glitch.me/")',
-  })
-
-  res.sendFile(path.join(__dirname, 'public', 'nested.html'));
-})
-
-// app.use('/', express.static('public'));
-
-
-app.get('/camera-allowed', (req, res) => {
-  res.set({
-    // 'Feature-Policy': 'camera *',
-  })
-
-  res.sendFile(path.join(__dirname, 'public', 'camera', 'allowed.html'));
-})
-
-app.get('/camera-disallowed', (req, res) => {
-  res.set({
-    "Feature-Policy": "camera 'none'",
-  })
-
-  res.set({
-    'Permissions-Policy': 'camera=()',
-  })
-
-  res.sendFile(path.join(__dirname, 'public', 'camera', 'disallowed.html'));
 })
 
 app.listen(PORT, () => {

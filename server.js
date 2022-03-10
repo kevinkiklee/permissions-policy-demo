@@ -24,7 +24,7 @@ const buildPermissionsPolicyHeader = (feature, demoName) => {
 }
 
 app.use(morgan('tiny'))
-app.use(express.static('public', {extensions: ['js', 'css']}));
+app.use(express.static('public', {extensions: ['js', 'css', 'png']}));
 
 app.get('/demo/:demoName', (req, res) => {
   const { demoName } = req.params

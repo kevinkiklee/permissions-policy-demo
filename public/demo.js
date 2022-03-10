@@ -32,24 +32,12 @@ async function getPosition() {
 }
 
 function setAction() {
-  const actionParam = urlParams.get("action");
   const trustedOriginUrl = new URL(TRUSTED_ORIGIN_URL);
   const untrustedOriginUrl = new URL(UNTRUSTED_ORIGIN_URL);
 
-  // switch (actionParam) {
-  //   case "trusted-origin":
-  //     trustedOriginUrl.searchParams.append("shouldTriggerAction", "true");
-  //     break;
-  //   case "untrusted-origin":
-  //     untrustedOriginUrl.searchParams.append("shouldTriggerAction", "true");
-  //     break;
-  //   case "trusted-nested-origin":
-  //     trustedOriginUrl.searchParams.append("shouldTriggerNestedAction", "true");
-  //     break;
-  //   case "iframe-nav-origin":
-  //     trustedOriginUrl.searchParams.append("shouldNavigate", "true");
-  //     break;
-  // }
+  const [demoName] = window.location.href.split('/').reverse()
+  // const demoExplainerImage = document.querySelector('.demo-explainer')
+  // demoExplainerImage.src = `/img/${demoName}.png`
 
   document.querySelector(".demo-trusted-iframe").src = trustedOriginUrl;
   document.querySelector(".demo-untrusted-iframe").src = untrustedOriginUrl;

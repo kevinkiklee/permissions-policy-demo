@@ -3,11 +3,25 @@ p {
   padding: 0;
 }
 
+/* .demo-main {
+  display: flex;
+  flex-direction: column;
+} */
+
+.demo-explainer {
+  max-width: 800px;
+  margin: 25px auto;
+}
+
 .demo-container {
   max-width: 800px;
   margin: 50px auto;
   display: flex;
   flex-direction: column;
+}
+
+.demo-content {
+  border-radius: 2px;
 }
 
 .demo-content-container {
@@ -18,8 +32,7 @@ p {
 .demo-content {
   border: 1px black solid;
   background-color: #bed899;
-  padding: 45px;
-  width: 100%;
+  padding: 12px;
 }
 
 .demo-iframes-container {

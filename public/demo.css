@@ -1,27 +1,41 @@
+body {
+  font-size: 100%;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
 p {
   margin: 0;
   padding: 0;
+  font-size: 1em;
 }
 
-/* .demo-main {
-  display: flex;
-  flex-direction: column;
-} */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 5px;
+}
 
-.demo-explainer {
-  max-width: 800px;
-  margin: 25px auto;
+.mdl-button--raised {
+  background-color: whitesmoke;
+}
+
+.demo-header {
+  width: 100%;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+}
+
+.demo-layout {
+  box-sizing: border-box;
 }
 
 .demo-container {
   max-width: 800px;
-  margin: 50px auto;
+  margin: 20px auto 0 auto;
   display: flex;
   flex-direction: column;
-}
-
-.demo-content {
-  border-radius: 2px;
+  box-shadow: none;
 }
 
 .demo-content-container {
@@ -33,23 +47,37 @@ p {
   border: 1px black solid;
   background-color: #bed899;
   padding: 12px;
+  box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%),
+    0 2px 4px -1px rgb(0 0 0 / 20%);
+}
+
+.demo-navigation {
+  margin: 10px auto;
+  padding: 10px;
+}
+
+.demo-btn {
+  margin: 5px;
+}
+
+.demo-divider {
+  border-bottom: 1px gray solid;
 }
 
 .demo-iframes-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1%;
 }
 
-.demo-trusted-iframe {
-  width: 49%;
+.demo-trusted-iframe,
+.demo-untrusted-iframe {
   border: 1px black solid;
+  box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%),
+    0 2px 4px -1px rgb(0 0 0 / 20%);
+}
+.demo-trusted-iframe {
   background-color: #d3e8fa;
 }
 
 .demo-untrusted-iframe {
-  width: 49%;
-  border: 1px black solid;
   background-color: #fdcbcb;
 }
 
@@ -62,4 +90,28 @@ p {
 .demo-geolocation-latitude,
 .demo-geolocation-longitude {
   margin-left: 5px;
+}
+
+.demo-explainer-iframe {
+  height: 100%;
+}
+
+@media only screen and (min-device-width: 480px) {
+  .demo-iframes-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1%;
+  }
+
+  .demo-trusted-iframe {
+    width: 49%;
+    border: 1px black solid;
+    background-color: #d3e8fa;
+  }
+
+  .demo-untrusted-iframe {
+    width: 49%;
+    border: 1px black solid;
+    background-color: #fdcbcb;
+  }
 }

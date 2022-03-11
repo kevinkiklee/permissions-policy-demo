@@ -6,7 +6,7 @@ const PORT = 3000
 const app = express()
 
 const TRUSTED_SITE = 'https://pp-demo-trusted-site.glitch.me/'
-const NAVIGATED_SITE = 'https://pp-demo-trusted-site.glitch.me/'
+const NAVIGATED_SITE = "https://pp-demo-trusted-iframe-nav.glitch.me/"
 const DEMO_FEATURE = 'geolocation'
 
 const POLICIES = {
@@ -32,6 +32,12 @@ app.get('/demo/:demoName', (req, res) => {
   res.set(buildPermissionsPolicyHeader(DEMO_FEATURE, demoName))
   res.sendFile(path.join(__dirname, 'public', `demo.html`));
 })
+
+app.get("/explainer/:name", (req, res) => {
+  const { name } = req.params;
+  res.sendFile(path.join(__dirname, "public", "explainer", `${name}.html`));
+});
+
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));

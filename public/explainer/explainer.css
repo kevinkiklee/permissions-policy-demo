@@ -1,10 +1,12 @@
 html {
-  height: fit-content;
+  /* height: fit-content; */
+  height: 100%;
 }
 
 .demo-explainer {
   max-width: 800px;
-  margin: 25px auto;
+  margin: 0 auto;
+  padding: 25px;
 }
 
 .demo-title {

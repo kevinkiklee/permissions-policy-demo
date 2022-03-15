@@ -17,23 +17,25 @@
 
 <body>
   <div class="demo-explainer">
-    <h1 class="demo-title">Feature allowed for all origins</h1>
+    <h1 class="demo-title">Instructions</h1>
     <p>
-      When the allowlist is set to the <span class="inline-code">*</span> token, the feature is allowed for all origins present on the page, including itself and all iframes.
+      In each demo page, you will be presented with 3 boxes that contain the content rendered from:
+    <ul>
+      <li>Same-origin (your site)</li>
+      <li>Trusted cross-origin in an iframe</li>
+      <li>Untrusted cross-origin in an iframe</li>
+    </ul>
     </p>
-    <h2 class="demo-code-title">Response Header</h2>
-    <code>
-        <p>Permissions-Policy:</p> 
-        <p class="indented">geolocation=*</p>
-      </code>
-    <h2 class="demo-code-title">Trusted iframe tag</h2>
-    <code>
-        &lt;iframe src="https://pp-demo-trusted-site.glitch.me" allow="geolocation">&lt;/iframe>
-      </code>
-    <h2 class="demo-code-title">Untrusted iframe tag</h2>
-    <code>
-        &lt;iframe src="https://pp-demo-trusted-iframe-nav.glitch.me" allow="geolocation">&lt;/iframe>
-      </code>
+    <p>
+      The above boxes behave different based on how the Permissions-Policy header was constructed. In the demo, we take a look at 5 different ways that the header can be cosntructed to control the feature. 
+    <ul>
+      <li>All origins present on the page including every iframe</li>
+      <li>Some origins that are listed in the header allowlist/li>
+      <li>Same-origin only</li>
+      <li>No origins</li>
+      <li>Navigated iframe</li>
+    </ul>
+    </p>
   </div>
   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>

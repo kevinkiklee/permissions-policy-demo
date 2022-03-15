@@ -11,26 +11,24 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amplang=en">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-amber.min.css">
   <link rel="stylesheet" href="/explainer/explainer.css">
 </head>
 
 <body>
   <div class="demo-explainer">
-    <h1 class="demo-title">Feature allowed for all origins</h1>
+    <h1 class="demo-title">Feature allowed for the navigated iframe origin</h1>
     <p>
-      When the allowlist is set to *, the feature is allowed for all origins present on the page, including itself and
-      all
-      iframes.
+      To allow feature access to the origin that the iframe navigates to, list the origin in the iframe <span class="inline-code">allow</span> attribute. When using this syntax, the allowlist should include the <span class="inline-code">'src'</span> token because the syntactic sugar where <span class="inline-code">allow="geolocation"</span> is a shorthand for <span class="inline-code">allow="geolocation 'src'"</span>
     </p>
     <h2 class="demo-code-title">Response Header</h2>
     <code>
         <p>Permissions-Policy:</p> 
-        <p class="indented">geolocation=*</p>
+        <p class="indented">geolocation=(self "https://pp-demo-trusted-site.glitch.me/" "https://pp-demo-trusted-iframe-nav.glitch.me/")</p>
       </code>
     <h2 class="demo-code-title">Trusted iframe tag</h2>
     <code>
-        &lt;iframe src="https://pp-demo-trusted-site.glitch.me" allow="geolocation">&lt;/iframe>
+        &lt;iframe src="https://pp-demo-trusted-site.glitch.me" allow="geolocation 'src' https://pp-demo-trusted-iframe-nav.glitch.me/">&lt;/iframe>
       </code>
     <h2 class="demo-code-title">Untrusted iframe tag</h2>
     <code>

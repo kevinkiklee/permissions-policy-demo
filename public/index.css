@@ -1,43 +1,72 @@
+body {
+  font-size: 100%;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
 p {
   margin: 0;
   padding: 0;
+  font-size: 1em;
 }
 
-.demo-container {
-  max-width: 800px;
-  margin: 50px auto;
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 5px;
+}
+
+.mdl-button--raised {
+  background-color: whitesmoke;
+}
+
+.demo-header {
+  width: 100%;
+  background-color: #ccc;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid #333;
 }
 
 .demo-content-container {
-  display: flex;
-  flex-direction: column;
+  max-width: 800px;
+  margin: 20px auto 0 auto;
+  padding: 0 20px;
 }
 
 .demo-content {
   border: 1px black solid;
   background-color: #bed899;
-  padding: 45px;
-  width: 100%;
+  padding: 12px;
+  box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%),
+    0 2px 4px -1px rgb(0 0 0 / 20%);
 }
 
-.demo-iframes-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1%;
+.demo-navigation {
+  margin: 10px auto;
+  padding: 10px;
 }
 
-.demo-trusted-iframe {
-  width: 49%;
+.demo-nav-btn {
+  margin: 5px;
+}
+
+.demo-trusted-iframe,
+.demo-untrusted-iframe {
+  height: 185px;
   border: 1px black solid;
+  box-shadow: 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%),
+    0 2px 4px -1px rgb(0 0 0 / 20%);
+}
+.demo-trusted-iframe {
   background-color: #d3e8fa;
 }
 
 .demo-untrusted-iframe {
-  width: 49%;
-  border: 1px black solid;
   background-color: #fdcbcb;
+}
+
+.demo-geolocation {
+  margin-bottom: 50px;
 }
 
 .demo-geolocation-result {
@@ -49,4 +78,28 @@ p {
 .demo-geolocation-latitude,
 .demo-geolocation-longitude {
   margin-left: 5px;
+}
+
+.demo-explainer-iframe {
+  height: 100%;
+}
+
+@media only screen and (min-device-width: 480px) {
+  .demo-iframes-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1%;
+  }
+
+  .demo-trusted-iframe {
+    width: 49%;
+    border: 1px black solid;
+    background-color: #d3e8fa;
+  }
+
+  .demo-untrusted-iframe {
+    width: 49%;
+    border: 1px black solid;
+    background-color: #fdcbcb;
+  }
 }

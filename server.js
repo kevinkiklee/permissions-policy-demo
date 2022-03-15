@@ -13,8 +13,8 @@ const POLICIES = {
   'all-allowed': '*',
   'none-allowed': '()',
   'some-allowed': `(self "${TRUSTED_SITE}")`,
-  'same-origin-allowed': '(self)',
-  'iframe-nav-allowed': `(self "${TRUSTED_SITE}" "${NAVIGATED_SITE}")`,
+  'same-allowed': '(self)',
+  'nav-allowed': `(self "${TRUSTED_SITE}" "${NAVIGATED_SITE}")`,
 }
 
 const buildPermissionsPolicyHeader = (feature, demoName) => {
@@ -26,11 +26,14 @@ const buildPermissionsPolicyHeader = (feature, demoName) => {
 app.use(morgan('tiny'))
 app.use(express.static('public', {extensions: ['js', 'css', 'png']}));
 
-app.get('/demo/:demoName', (req, res) => {
-  const { demoName } = req.params
+app.get('/demo/:name?', (req, res) => {
+  const { name } = req.params
 
-  res.set(buildPermissionsPolicyHeader(DEMO_FEATURE, demoName))
-  res.sendFile(path.join(__dirname, 'public', `demo.html`));
+  if (name) {
+    res.set(buildPermissionsPolicyHeader(DEMO_FEATURE, name));
+  }
+
+  res.sendFile(path.join(__dirname, 'public', `index.html`));
 })
 
 app.get("/explainer/:name", (req, res) => {

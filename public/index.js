@@ -65,6 +65,7 @@ const setupDemoIframes = demoName => {
   // If there is no demo name, hide the demo div since it's the root page
   if (!demoName) {
     demoContentContainerEl.style.display = 'none'
+    return
   }
 
   let trustedOriginUrl = TRUSTED_ORIGIN_URL

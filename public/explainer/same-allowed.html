@@ -17,11 +17,9 @@
 
 <body>
   <div class="demo-explainer">
-    <h1 class="demo-title">Feature allowed for all origins</h1>
+    <h1 class="demo-title">Feature allowed for same-origin only</h1>
     <p>
-      When the allowlist is set to *, the feature is allowed for all origins present on the page, including itself and
-      all
-      iframes.
+      When the allowlist is set to the <span class="inline-code">self</span> token, the feature is allowed only for same-origin. Note that different subdomain is not same-origin but different path is same-origin. 
     </p>
     <h2 class="demo-code-title">Response Header</h2>
     <code>

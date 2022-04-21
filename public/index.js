@@ -4,6 +4,8 @@ const UNTRUSTED_ORIGIN_URL = 'https://pp-demo-untrusted-site.glitch.me'
 const urlParams = new URLSearchParams(window.location.search)
 
 const demoContentContainerEl = document.querySelector('.demo-content-container')
+const demoInnerContentEl = document.querySelector('.demo-inner-content')
+const demoRunBtnEl = document.querySelector('.demo-run-btn')
 const demoExplainerIframeEl = document.querySelector('.demo-explainer-iframe')
 const navButtonEls = document.querySelectorAll('.demo-nav-btn')
 
@@ -27,7 +29,7 @@ const onGetPositionError = e => {
   console.warn(e)
 }
 
-const getPosition = async () => {
+const getPosition = () => {
   navigator.geolocation.getCurrentPosition(
     onGetPositionSuccess,
     onGetPositionError,
@@ -45,6 +47,24 @@ const setIframeHeightToContent = iframeEl => () => {
   iframeEl.style.height = iframeEl.contentWindow.document.body.scrollHeight + 'px'
 }
 
+const setupRunDemoBtn = (demoName) => {
+  demoRunBtnEl.onclick = () => {
+    let trustedOriginUrl = TRUSTED_ORIGIN_URL;
+
+    if (demoName === IFRAME_NAV_DEMO_NAME) {
+      trustedOriginUrl += "?shouldNavigate=true";
+    }
+
+    document.querySelector(".demo-trusted-iframe").src = trustedOriginUrl;
+    document.querySelector(".demo-untrusted-iframe").src = UNTRUSTED_ORIGIN_URL;
+
+    demoInnerContentEl.style.display = 'inherit'
+    demoRunBtnEl.style.display = 'none'
+
+    getPosition();
+  }
+};
+
 const setupNavButtons = demoName => {
   navButtonEls.forEach(el => el.onclick = () => {
     window.open(`/demo/${el.dataset.name}`, '_self')
@@ -59,22 +79,18 @@ const setupNavButtons = demoName => {
 const setupExplainerIframe = demoName => {
   demoExplainerIframeEl.src = `/explainer/${demoName}`
   demoExplainerIframeEl.onload = setIframeHeightToContent(demoExplainerIframeEl)
+
 }
 
 const setupDemoIframes = demoName => {
-  // If there is no demo name, hide the demo div since it's the root page
-  if (!demoName) {
-    demoContentContainerEl.style.display = 'none'
+  demoInnerContentEl.style.display = "none";
+
+  if (demoName) {
     return
   }
 
-  let trustedOriginUrl = TRUSTED_ORIGIN_URL
-  if (demoName === IFRAME_NAV_DEMO_NAME) {
-    trustedOriginUrl += '?shouldNavigate=true'
-  }
-
-  document.querySelector('.demo-trusted-iframe').src = trustedOriginUrl
-  document.querySelector('.demo-untrusted-iframe').src = UNTRUSTED_ORIGIN_URL
+  demoContentContainerEl.style.display = 'none'
+  demoRunBtnEl.style.display = 'none'
 }
 
 const setupPage = () => {
@@ -85,13 +101,10 @@ const setupPage = () => {
     return
   }
 
-  setupNavButtons(demoName)
   setupExplainerIframe(demoName)
+  setupRunDemoBtn(demoName)
+  setupNavButtons(demoName)
   setupDemoIframes(demoName)
-
-  if (demoName) {
-    getPosition()
-  }
 }
 
 setupPage()

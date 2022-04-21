@@ -45,17 +45,23 @@
     </header>
     <main class="demo-content-container">
       <div class="demo-content">
-        <p>
-          <b>YOUR SITE</b> - This box is your origin
-        </p>
-        <ul class="demo-geolocation">
-          <li><b>Latitude:</b><span class="demo-geolocation-latitude">...</span></li>
-          <li><b>Longitude:</b><span class="demo-geolocation-longitude">...</span></li>
-        </ul>
-        <div class="demo-iframes-container">
-          <iframe class="demo-trusted-iframe"
-            allow="geolocation 'src' https://pp-demo-trusted-iframe-nav.glitch.me/">Trusted iframe</iframe>
-          <iframe class="demo-untrusted-iframe" allow="geolocation"></iframe>
+        <button class="demo-run-btn mdl-button mdl-js-button mdl-button--raised">
+          Run demo
+        </button>
+        <div class="demo-inner-content">
+          <p>
+            <b>YOUR SITE</b> - This box is your origin
+          </p>
+          <ul class="demo-geolocation">
+            <li><b>Latitude:</b><span class="demo-geolocation-latitude">...</span></li>
+            <li><b>Longitude:</b><span class="demo-geolocation-longitude">...</span></li>
+          </ul>
+          <div class="demo-iframes-container">
+            <iframe class="demo-trusted-iframe" allow="geolocation 'src' https://pp-demo-trusted-iframe-nav.glitch.me/">
+              <p>Trusted iframe</p>
+            </iframe>
+            <iframe class="demo-untrusted-iframe" allow="geolocation">Untrusted iframe</iframe>
+          </div>
         </div>
       </div>
     </main>
